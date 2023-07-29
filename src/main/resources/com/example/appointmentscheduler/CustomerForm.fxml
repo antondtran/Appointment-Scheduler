@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ComboBox?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appointmentscheduler.controller.CustomerController">
    <children>
       <Label layoutX="235.0" layoutY="40.0" text="Add Customer" underline="true">
@@ -22,7 +23,7 @@
       <Label layoutX="129.0" layoutY="202.0" text="Phone Number" />
       <TextField fx:id="phoneNumberTextField" layoutX="217.0" layoutY="197.0" />
       <Label layoutX="182.0" layoutY="232.0" text="State" />
-      <TextField fx:id="stateTextField" layoutX="217.0" layoutY="227.0" />
+      <ComboBox fx:id="stateComboField" layoutX="217.0" layoutY="227.0" />
       <Label layoutX="147.0" layoutY="264.0" text="Postal Code" />
       <TextField fx:id="postalCodeTextField" layoutX="216.0" layoutY="260.0" />
       <Button layoutX="224.0" layoutY="348.0" mnemonicParsing="false" text="Save" onAction="#saveBtn"/>

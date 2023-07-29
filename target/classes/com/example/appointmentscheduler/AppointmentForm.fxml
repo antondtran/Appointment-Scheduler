@@ -32,9 +32,9 @@
       <Label layoutX="132.0" layoutY="242.0" text="End Date/Time" />
       <ComboBox fx:id="endTimePicker" layoutX="405.0" layoutY="237.0" prefWidth="150.0" />
       <Label layoutX="157.0" layoutY="274.0" text="Contact ID" />
-      <TextField fx:id="contactTextField" layoutX="219.0" layoutY="269.0" />
+      <ComboBox fx:id="contactPicker" layoutX="219.0" layoutY="269.0" />
       <Label layoutX="173.0" layoutY="304.0" text="User ID" />
-      <TextField fx:id="userTextField" layoutX="220.0" layoutY="299.0" />
+      <ComboBox fx:id="userPicker" layoutX="220.0" layoutY="299.0" />
       <Label layoutX="145.0" layoutY="334.0" text="Customer ID" />
       <TextField fx:id="customerTextField" layoutX="220.0" layoutY="329.0" />
       <Button layoutX="412.0" layoutY="361.0" mnemonicParsing="false" text="Save" onAction="#saveBtn"/>

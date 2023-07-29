@@ -1,10 +1,8 @@
 package com.example.appointmentscheduler.model;
 
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.security.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Appointment {
@@ -17,13 +15,46 @@ public class Appointment {
     private LocalDateTime endDateTime;
     private LocalDateTime createdDate;
     private String createdBy;
-    private Timestamp lastUpdate;
+    private LocalDateTime lastUpdate;
     private String lastUpdatedBy;
     private int contactID;
     private int userID;
     private int customerID;
 
-    public Appointment(int id, String title, String type, String description, String location, LocalDateTime startDateTime, LocalDateTime endDateTime, int contactID, int userID, int customerID) {
+    private final ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
+
+    public Appointment(){}
+
+    public Appointment(String title, String description, String location, String type, LocalDateTime startDateTime, LocalDateTime endDateTime, LocalDateTime createdDate, String createdBy, int contactID, int userID, int customerID) {
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.type = type;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.createdDate = createdDate;
+        this.createdBy = createdBy;
+        this.contactID = contactID;
+        this.userID = userID;
+        this.customerID = customerID;
+    }
+
+    public Appointment(int id, String title, String description, String location, String type, LocalDateTime startDateTime, LocalDateTime endDateTime, LocalDateTime createdDate, String createdBy, int contactID, int userID, int customerID) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.type = type;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.createdDate = createdDate;
+        this.createdBy = createdBy;
+        this.contactID = contactID;
+        this.userID = userID;
+        this.customerID = customerID;
+    }
+
+    public Appointment(int id, String title, String type, String description, String location, LocalDateTime startDateTime, LocalDateTime endDateTime, LocalDateTime createdDate, String createdBy, LocalDateTime lastUpdate, String lastUpdatedBy, int contactID, int userID, int customerID) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -84,7 +115,7 @@ public class Appointment {
         return startDateTime;
     }
 
-    public void setStartDateTime(LocalDateTime startDate) {
+    public void setStartDateTime(LocalDateTime startDateTime) {
         this.startDateTime = startDateTime;
     }
 
@@ -92,7 +123,7 @@ public class Appointment {
         return endDateTime;
     }
 
-    public void setEndDate(LocalDateTime endDateTime) {
+    public void setEndDateTime(LocalDateTime endDateTime) {
         this.endDateTime = endDateTime;
     }
 
@@ -137,11 +168,11 @@ public class Appointment {
         this.createdBy = createdBy;
     }
 
-    public Timestamp getLastUpdate() {
+    public LocalDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
+    public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -151,5 +182,31 @@ public class Appointment {
 
     public void setLastUpdatedBy(String lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
+    }
+
+    public void addList(Appointment appointment ){
+        appointmentList.add(appointment);
+    }
+
+    public void updateList(Appointment updatedAppointment) {
+        int index = -1;
+        for (Appointment appointment : appointmentList) {
+            if (appointment.getId() == updatedAppointment.getId()) {
+                index = appointmentList.indexOf(appointment);
+                break;
+            }
+        }
+
+        if (index != -1) {
+            // Remove the old appointment from the list
+            appointmentList.remove(index);
+
+            // Add the updated appointment to the list
+            appointmentList.add(index, updatedAppointment);
+        }
+    }
+
+    public ObservableList<Appointment> getAppointmentList() {
+        return appointmentList;
     }
 }
